@@ -18,6 +18,8 @@ import scala.util.{Failure, Success}
 import org.scalajs.dom
 import org.scalajs.dom.ext.Ajax
 import org.scalajs.dom.raw.XMLHttpRequest
+import scalatags.JsDom.TypedTag
+import scalatags.JsDom.all._
 
 object Paths {
   val origin = dom.window.location.origin
@@ -43,7 +45,9 @@ object MainApp extends JSApp {
   def preparePage(defJson: String): Unit = {
     val ddp = new DocumentDefinitionParser(defJson)
     val dp = new DocumentProducer(ddp.doc)
-    dp.pageContent
+    val dpc = div(cls:="document-producer-container").render
+    dom.document.body.appendChild(dpc)
+    dp.pageContent(dpc)
   }
 
   def main() : Unit = {

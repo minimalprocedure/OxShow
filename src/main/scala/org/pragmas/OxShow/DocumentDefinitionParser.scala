@@ -14,10 +14,14 @@ package org.pragmas.OxShow
 object DocAsset {
   val EMPTY = ""
   val EMPTY_LIST = List()
-  val IMAGE = "image"
-  val TEXT = "text"
-  val BACKGROUND = "background"
-  val GENERIC = "generic"
+  val EMPTY_MAP = Map[String, Any]()
+  val TIMAGE = List("image")
+  val TTEXT = List("text")
+  val TAUDIO = List("audio")
+  val TVIDEO = List("video")
+  val TVIMEO = List(TVIDEO(0), "vimeo")
+  val TBACKGROUND = List("background")
+  val TGENERIC = List("generic")
 }
 
 object DocStyle {
@@ -39,7 +43,7 @@ case class DocNode(
   name: String = DocNode.EMPTY,
   title: String = DocNode.EMPTY,
   assets : List[DocAsset] = DocNode.EMPTY_ASSETS,
-  background: DocAsset = DocAsset(DocAsset.BACKGROUND),
+  background: DocAsset = DocAsset(DocAsset.TBACKGROUND),
   links : List[DocNode] = DocNode.EMPTY_NODES
 )
 
@@ -49,11 +53,12 @@ case class Document(
 )
 
 case class DocAsset(
-  t: String = DocAsset.GENERIC,
+  T: List[String] = DocAsset.TGENERIC,
   name: String = DocAsset.EMPTY,
-  classNames: Option[List[String]] = Some(DocAsset.EMPTY_LIST),
   content: String =  DocAsset.EMPTY,
-  style: Option[Map[String, String]] = Some(DocStyle.EMPTY)
+  classNames: Option[List[String]] = Some(DocAsset.EMPTY_LIST),
+  style: Option[Map[String, String]] = Some(DocStyle.EMPTY),
+  options: Option[Map[String, String]] = Some(DocStyle.EMPTY)
 )
 
 class DocumentDefinitionParser(jsonDoc: String = "{}") {

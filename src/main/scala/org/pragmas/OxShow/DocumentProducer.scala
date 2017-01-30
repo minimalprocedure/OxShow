@@ -11,50 +11,99 @@
 
 package org.pragmas.OxShow
 
-import scala.collection.mutable.ArrayBuffer
-
 import org.scalajs.dom
-import org.scalajs.dom.raw.Element
-import scalatags.Text.TypedTag
-import scalatags.Text.all._
-import scalatags.stylesheet._
+import org.scalajs.dom.raw.{ Element, Event, HTMLDivElement, Node, UIEvent }
+import scalatags.JsDom.all._
+import scala.scalajs.js
+import js.JSConverters._
+import org.scalajs.dom.ext._
 
 class DocumentProducer(doc : Document) {
- 
-  def pageContent = {
-    val content = assets(doc.nodes(0))
-    dom.document.body.innerHTML = div(content).render
-  }
-
+  
   def prepareStyle(asset: DocAsset) = {
     val empty = List[String]()
     asset.style match {
       case Some(s) => s.foldLeft(empty) (
         (acc, v) => acc ++: List(s"${v._1}:${v._2}")).mkString(";")
-    case _ => ""
+      case _ => ""
+    }
   }
-}
 
   def prepareClass(asset: DocAsset) = {
-    println(asset.classNames)
     asset.classNames match {
       case Some(s) => s.mkString(" ")
       case _ => ""
     }
   }
 
-  def prepareAsset(asset: DocAsset) = {
-    div(cls:=prepareClass(asset), data.name:=asset.name, data.t:=asset.t, data.UUID:= Utils.uuid, style:= prepareStyle(asset))(
-      asset.t match {
-        case DocAsset.IMAGE => img(src:= asset.content)
-        case DocAsset.TEXT => div(asset.content)
-        case _ => ""
+  def prepareVimeo(asset: DocAsset, parent: HTMLDivElement) = {
+    dom.document.head.appendChild(
+      script(src:="https://player.vimeo.com/api/player.js").render)
+
+    val options = Utils.mapToLiteral(asset.options.get)
+    val uniqueId = Utils.uniqueId
+    if (options.fullsize == true) {
+      options.width = dom.document.body.clientWidth
+      options.height = dom.document.body.clientHeight
+    }
+
+    parent.appendChild(div(id:=uniqueId, cls:="vimeo-player", data.vimeo.id:=Utils.strIsInt(asset.content)).render)
+
+    val trigger = div(cls:="vimeo-trigger", onshow:= {
+      val player = new VimeoPlayer(uniqueId, options)
+    }).render
+    parent.appendChild(trigger)
+
+    dom.window.onresize = (ev: dom.UIEvent) => {
+      val h = dom.window.innerHeight
+      val w = dom.window.innerWidth
+      val players = dom.document.getElementsByClassName("vimeo-player")
+      players.foreach { node: Node =>
+        val videoWrap = node.asInstanceOf[Element]
+        videoWrap.setAttribute("style", s"height:${h}; width:${w};")
+        val iframe = videoWrap.firstChild.asInstanceOf[Element]
+        iframe.setAttribute("height", h.toString)
+        iframe.setAttribute("width", w.toString)
       }
-    )
+ 
+    }
+    
   }
 
-  def assets(node: DocNode): List[TypedTag[String]] = {    
-    node.assets.map(prepareAsset)
+  def prepareAsset(asset: DocAsset, parent: HTMLDivElement) = {
+
+    val assetContainer = div(cls:=prepareClass(asset),
+      data.name:=asset.name,
+      data.T:=asset.T.mkString("_"),
+      data.UUID:=Utils.uuid,
+      style:= prepareStyle(asset)).render
+
+    parent.render.appendChild(assetContainer)
+
+    asset.T match {
+      case DocAsset.TIMAGE =>
+        assetContainer.appendChild(img(src:= asset.content).render)
+      case DocAsset.TTEXT =>
+        assetContainer.appendChild(div(asset.content).render)
+      case DocAsset.TVIDEO =>
+        assetContainer.appendChild(div(asset.content).render)
+      case DocAsset.TVIMEO =>
+        prepareVimeo(asset, assetContainer)
+      case _ => div()
+    }
   }
+
+  def assets(node: DocNode, parent: HTMLDivElement) = {
+    val nodeContainer = div(cls:="node-container").render
+    parent.appendChild(nodeContainer)
+    node.assets.foreach(asset => prepareAsset(asset, nodeContainer))
+  }
+
+  def pageContent(parent: HTMLDivElement) = {
+    doc.nodes.foreach( node => {
+      assets(node, parent)
+    })
+  }
+
 
 }

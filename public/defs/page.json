@@ -7,11 +7,33 @@
             "name": "node1",
             "assets": [
                 {
-                    "t": "image",
+                    "T": ["video","vimeo"],
+                    "name": "assetVideo",
+                    "content": "n:76979871",
+                    "options": {
+                        "title": "b:false",
+                        "byline": "b:false",
+                        "color": "ffff00",
+                        "fullsize": "b:true",
+                        "width": "auto",
+                        "autoplay": "b:false"
+                    },
+                    "classNames": [],
+                    "style": {
+                        "position": "absolute",
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "100%",
+                        "width": "100%"
+                    }
+                },
+                {
+                    "T": ["image"],
                     "name": "asset2",
                     "content": "http://www.scala-js.org/assets/img/scala-js-site-logo.svg",
                     "classNames": [],
                     "style": {
+                        "display": "block",
                         "position": "absolute",
                         "left": "0px",
                         "top": "0px",
@@ -20,7 +42,7 @@
                     }
                 },
                 {
-                    "t": "text",
+                    "T": ["text"],
                     "name": "asset1",
                     "content": "I'm a text",
                     "classNames": [
@@ -28,6 +50,7 @@
                         "b"
                     ],
                     "style": {
+                        "display": "block",
                         "position": "absolute",
                         "left": "100px",
                         "top": "100px",
@@ -37,11 +60,12 @@
                 }
             ],
             "background": {
-                "t": "image",
+                "T": ["image"],
                 "name": "back",
                 "content": "http://pippo.png",
                 "classNames": [],
                 "style": {
+                    "display": "none",
                     "position": "absolute",
                     "left": "0px",
                     "top": "0px",
