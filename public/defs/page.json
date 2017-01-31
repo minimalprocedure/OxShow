@@ -7,17 +7,12 @@
             "name": "node1",
             "assets": [
                 {
-                    "T": ["video","vimeo"],
-                    "name": "assetVideo",
-                    "content": "n:76979871",
-                    "options": {
-                        "title": "b:false",
-                        "byline": "b:false",
-                        "color": "ffff00",
-                        "fullsize": "b:true",
-                        "width": "auto",
-                        "autoplay": "b:false"
-                    },
+                    "T": [
+                        "image"
+                    ],
+                    "name": "asset2",
+                    "content": "images/Lindeberg02.jpg",
+                    "fullsize": "b:true",
                     "classNames": [],
                     "style": {
                         "position": "absolute",
@@ -28,9 +23,36 @@
                     }
                 },
                 {
-                    "T": ["image"],
+                    "T": [
+                        "video",
+                        "vimeo"
+                    ],
+                    "name": "Lindeberg02",
+                    "content": "n:200653452",
+                    "fullsize": "b:true",
+                    "options": {
+                        "title": "b:false",
+                        "byline": "b:false",
+                        "color": "ffff00",                        
+                        "width": "auto",
+                        "autoplay": "b:false"
+                    },
+                    "classNames": [],
+                    "style": {
+                        "display": "none",
+                        "position": "absolute",
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "100%",
+                        "width": "100%"
+                    }
+                },
+                {
+                    "T": [
+                        "image"
+                    ],
                     "name": "asset2",
-                    "content": "http://www.scala-js.org/assets/img/scala-js-site-logo.svg",
+                    "content": "images/avatar.png",
                     "classNames": [],
                     "style": {
                         "display": "block",
@@ -42,25 +64,116 @@
                     }
                 },
                 {
-                    "T": ["text"],
-                    "name": "asset1",
-                    "content": "I'm a text",
+                    "T": [
+                        "image",
+                        "action"
+                    ],
+                    "name": "asset2",
+                    "content": "images/avatar.png",
+                    "tooltip": "stop",
+                    "classNames": [],
+                    "options": {
+                        "click": "console.log(this); console.log(JSON.stringify(org.pragmas.OxShow.VideoPlayer().vimeoPlayers['Lindeberg02']))"
+                    },
+                    "style": {
+                        "display": "block",
+                        "position": "absolute",
+                        "left": "10px",
+                        "top": "100px",
+                        "height": "100px",
+                        "width": "100px"
+                    }
+                },
+                {
+                    "T": [
+                        "text",
+                        "action"
+                    ],
+                    "name": "asset2",
+                    "content": "play",
+                    "tooltip": "play",
                     "classNames": [
-                        "a",
-                        "b"
+                        "asset-button",
+                        "asset-title"
+                    ],
+                    "options": {
+                        "click": "org.pragmas.OxShow.VideoPlayer().show('Lindeberg02'); org.pragmas.OxShow.VideoPlayer().play('Lindeberg02')"
+                    },
+                    "style": {
+                        "display": "block",
+                        "position": "absolute",
+                        "left": "10px",
+                        "top": "200px",
+                        "height": "100px",
+                        "width": "100px"
+                    }
+                },
+                {
+                    "T": [
+                        "text",
+                        "action"
+                    ],
+                    "name": "asset2",
+                    "content": "stop",
+                    "tooltip": "stop",
+                    "classNames": [
+                        "asset-button",
+                        "asset-title"
+                    ],
+                    "options": {
+                        "click": "org.pragmas.OxShow.VideoPlayer().pause('Lindeberg02')"
+                    },
+                    "style": {
+                        "display": "block",
+                        "position": "absolute",
+                        "left": "100px",
+                        "top": "200px",
+                        "height": "100px",
+                        "width": "100px"
+                    }
+                },
+                {
+                    "T": [
+                        "text",
+                        "action"
+                    ],
+                    "name": "asset1",
+                    "content": "bottone",
+                    "classNames": [
+                        "asset-button",
+                        "asset-title"
+                    ],
+                    "options": {
+                        "click": "console.log('AAAAAA')"
+                    },
+                    "style": {
+                        "display": "block",
+                        "position": "absolute",
+                        "left": "100px",
+                        "top": "10px"
+                    }
+                },
+                {
+                    "T": [
+                        "text"
+                    ],
+                    "name": "asset1",
+                    "content": "Sono il titolo dell'asset",
+                    "classNames": [
+                        "asset-title"
                     ],
                     "style": {
                         "display": "block",
                         "position": "absolute",
                         "left": "100px",
-                        "top": "100px",
-                        "height": "100px",
-                        "width": "100px"
+                        "top": "100px"
                     }
                 }
             ],
             "background": {
-                "T": ["image"],
+                "T": [
+                    "image"
+                ],
                 "name": "back",
                 "content": "http://pippo.png",
                 "classNames": [],

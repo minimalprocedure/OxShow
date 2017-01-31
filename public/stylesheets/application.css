@@ -1,0 +1,24 @@
+
+body {
+    overflow: hidden
+}
+
+.doc-asset {
+    margin: 0px !important;
+    padding: 0px !important;
+    background-color: transparent !important;
+}
+
+.doc-asset[data-t="text.action"] {
+    cursor: pointer
+}
+
+.doc-asset[data-t="image.action"] {
+    cursor: pointer
+}
+
+.asset-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}

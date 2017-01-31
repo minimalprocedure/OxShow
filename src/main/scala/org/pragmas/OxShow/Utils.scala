@@ -14,6 +14,8 @@ package org.pragmas.OxShow
 import scala.scalajs.js
 import js.JSConverters._
 import scala.scalajs.js.annotation.JSBracketAccess
+import org.scalajs.dom
+import org.scalajs.dom.ext._
 
 object Utils {
 
@@ -60,5 +62,12 @@ object Utils {
     )
     obj
   }
+
+  def fullAreaDim : (Double, Double) = {
+    //(dom.document.body.clientWidth, dom.document.body.clientHeight)
+    (dom.window.innerWidth, dom.window.innerHeight)
+  }
+
+  def remSpace(s: String) = s.replaceAll(" ", "_")
 }
 

@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OxShow</title>
+    
     <style>
 
       .docAsset {
         border: 1px solid red;
-      }
+      }   
      
     </style>
-    <script src="https://player.vimeo.com/api/player.js"></script>
+    
+    <link rel="stylesheet" href="stylesheets/vendor/foundation/foundation.css" />
+    <link rel="stylesheet" href="stylesheets/application.css" />
   </head>
-  <body>    
-    <script type="text/javascript" src="../target/scala-2.12/example-fastopt.js"></script>
+  <body>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="javascripts/vendor/foundation/jquery.js"></script>
+    <script src="javascripts/vendor/foundation/what-input.js"></script>
+    <script src="javascripts/vendor/foundation/foundation.min.js"></script>
+    <script type="text/javascript" src="../target/scala-2.12/oxshow-fastopt.js"></script>
     <script type="text/javascript">
+      $(document).foundation();
       org.pragmas.OxShow.MainApp().main();
     </script>
   </body>
