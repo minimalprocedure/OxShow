@@ -17,13 +17,19 @@ object DocAsset {
   val BTRUE = "b:true"
   val EMPTY_LIST = List()
   val EMPTY_MAP = Map[String, Any]()
+
   val TIMAGE = List("image")
   val TIMAGE_ACTION = List(TIMAGE(0), "action")
+
+  val THTML = List("html")
   val TTEXT = List("text")
   val TTEXT_ACTION = List(TTEXT(0), "action")
+  val TTEXT_LOAD = List(TTEXT(0), "load")
+
   val TAUDIO = List("audio")
   val TVIDEO = List("video")
-  val TVIMEO = List(TVIDEO(0), "vimeo")
+
+  val TVIDEO_VIMEO = List(TVIDEO(0), "vimeo")
   val TBACKGROUND = List("background")
   val TGENERIC = List("generic")
 }
@@ -47,7 +53,7 @@ case class DocNode(
   name: String = DocNode.EMPTY,
   title: String = DocNode.EMPTY,
   assets : List[DocAsset] = DocNode.EMPTY_ASSETS,
-  background: DocAsset = DocAsset(DocAsset.TBACKGROUND),
+  //background: DocAsset = DocAsset(DocAsset.TBACKGROUND),
   links : List[DocNode] = DocNode.EMPTY_NODES
 )
 

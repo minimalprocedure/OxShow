@@ -12,12 +12,14 @@
 
 package org.pragmas.OxShow
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.scalajs.js
-
+import scala.util.{Failure, Success}
+import org.scalajs.dom.raw.{HTMLDivElement, HTMLElement, HTMLIFrameElement, Node, UIEvent}
+import scalatags.JsDom.TypedTag
+import scalatags.JsDom.all._
 import org.scalajs.dom
 import org.scalajs.dom.ext._
-import org.scalajs.dom.raw.{HTMLDivElement, HTMLElement, HTMLIFrameElement, Node, UIEvent}
-import scalatags.JsDom.all._
 
 class DocumentProducer(doc: Document) {
 
@@ -25,11 +27,9 @@ class DocumentProducer(doc: Document) {
     val empty = List[String]()
     asset.style match {
       case Some(s) => s.foldLeft(empty)((acc, v) => {
-        //val (key, value) = (v._1, if (v._1.eq("height") && v._2.eq("100%")) Utils.fullAreaDim._2 else v._2)
         val (key, value) = v
         acc ++: List(s"${key}:${value}")
-      }).mkString(";")
-        
+      }).mkString(";")        
       case _ => ""
     }
   }
@@ -119,44 +119,61 @@ class DocumentProducer(doc: Document) {
     }
   }
 
+  def insertByHttp(uid: String, path: String) = {
+    Ajax.get(s"${Paths.public}/${path}")
+      .andThen {
+        case Success(xhr) =>
+          dom.document.getElementById(uid).innerHTML = xhr.responseText
+        case Failure(f) =>
+          dom.document.getElementById(uid).innerHTML = ""
+      }
+  }
+
   def prepareSimpleAsset(asset: DocAsset, parent: HTMLDivElement) = {
     val (fullsize, styleDim, w, h) = isFullSize(asset)
     val assetContainer = asset.T match {
-      case DocAsset.TTEXT => div(data.fullsize:=fullsize.toString, style:=styleDim)(asset.content).render
-      case DocAsset.TIMAGE => img(data.fullsize:=fullsize.toString, style:=styleDim)(src := asset.content).render
-      case _ => div(data.fullsize:=fullsize.toString, style:=styleDim)(asset.content).render
+      case DocAsset.TTEXT => {
+        val (prot, content) = Utils.getContentProtocol(asset.content)
+        prot match {
+          case ContentProtocols.HTTP =>
+            val uid = Utils.uniqueId
+            val dv = div(id:=uid, cls:="text-asset-prot-http")
+            insertByHttp(uid, content)
+            div(data.fullsize:=fullsize.toString, style:=styleDim)(dv).render
+          case ContentProtocols.STRING =>
+            div(data.fullsize:=fullsize.toString, style:=styleDim)(content).render
+        }
+      }
+      case DocAsset.THTML =>
+        div(data.fullsize:=fullsize.toString, style:=styleDim)(raw(asset.content)).render
+      case DocAsset.TIMAGE =>
+        img(data.fullsize:=fullsize.toString, style:=styleDim)(src := asset.content).render
+      case _ =>
+        div(data.fullsize:=fullsize.toString, style:=styleDim)("UNIMPLEMENTED").render
     }
     parent.appendChild(assetContainer)
   }
 
-  def prepareAsset(asset: DocAsset, parent: HTMLDivElement) = {
+  def prepareAsset(asset: DocAsset, parent: HTMLDivElement, zIndex: Int = 0) = {
 
     val assetContainer = div(cls := s"doc-asset ${asset.name} " + prepareClass(asset),
       data.name := asset.name,
       data.T := asset.T.mkString("."),
       data.UUID := Utils.uuid,
-      style := prepareStyle(asset),
+      style := prepareStyle(asset) + s";z-index:${zIndex}",
       title := asset.tooltip.getOrElse("")
     ).render
 
-    parent.render.appendChild(assetContainer)
+    parent.appendChild(assetContainer)
 
     asset.T match {
-      case DocAsset.TIMAGE | DocAsset.TTEXT | DocAsset.TVIDEO =>
+      case DocAsset.TIMAGE | DocAsset.TTEXT | DocAsset.THTML | DocAsset.TVIDEO =>
         prepareSimpleAsset(asset, assetContainer)
-      //{
-      //val (fullsize, styleDim, w, h) = isFullSize(asset)
-      //assetContainer.appendChild(img(src := asset.content).render)
-      //}
       case DocAsset.TIMAGE_ACTION =>
         prepareActionAsset(asset, assetContainer)
-      //case DocAsset.TTEXT =>
-      //  assetContainer.appendChild(div(asset.content).render)
       case DocAsset.TTEXT_ACTION =>
         prepareActionAsset(asset, assetContainer)
-      //case DocAsset.TVIDEO =>
-      //  assetContainer.appendChild(div(asset.content).render)
-      case DocAsset.TVIMEO =>
+      case DocAsset.TVIDEO_VIMEO =>
         prepareVimeo(asset, assetContainer)
       case _ => div()
     }
@@ -164,15 +181,22 @@ class DocumentProducer(doc: Document) {
     resizeFullsizes
   }
 
-  def assets(node: DocNode, parent: HTMLDivElement) = {
-    val nodeContainer = div(cls := "node-container").render
+  def assets(node: DocNode, parent: HTMLDivElement, zIndex: Int = 0) = {    
+    val nodeContainer = div(cls:=s"node-container ${node.name}", data.name:=node.name, style:=s"z-index:${zIndex}").render
+    nodeContainer.appendChild(
+      a(cls:="node-container-anchor", data.t:="node-container-anchor", name:=node.name, style:="display:block;").render)
     parent.appendChild(nodeContainer)
-    node.assets.foreach(asset => prepareAsset(asset, nodeContainer))
+    node.assets.foldLeft(node.assets.length + 10)((index, asset) => {
+      prepareAsset(asset, nodeContainer, index + zIndex * 10)
+      index - 1
+    })
+    nodeContainer
   }
 
   def pageContent(parent: HTMLDivElement) = {
-    doc.nodes.foreach(node => {
-      assets(node, parent)
+    doc.nodes.foldLeft(doc.nodes.length)((index, node) => {
+      parent.appendChild(assets(node, parent, index))
+      index - 1
     })
   }
 

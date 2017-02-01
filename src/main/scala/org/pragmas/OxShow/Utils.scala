@@ -17,6 +17,13 @@ import scala.scalajs.js.annotation.JSBracketAccess
 import org.scalajs.dom
 import org.scalajs.dom.ext._
 
+object ContentProtocols {
+  val SIZE = 5
+  val HTTP =   "http:"
+  val LOAD =   "load:"
+  val STRING = "strn:"
+}
+
 object Utils {
 
   def randomString(str: String, size: Int) : String = {
@@ -34,6 +41,14 @@ object Utils {
       case "n:" => ("number", str.drop(2).toInt)
       case "b:" => ("boolean", str.drop(2).toBoolean)
       case _ => ("string", str)
+    }
+  }
+
+  def getContentProtocol(str: String): (String, String) = {
+    str.take(ContentProtocols.SIZE) match {
+      case ContentProtocols.HTTP => (ContentProtocols.HTTP, str.drop(ContentProtocols.SIZE))
+      case ContentProtocols.STRING => (ContentProtocols.STRING, str.drop(ContentProtocols.SIZE))
+      case _ => (ContentProtocols.STRING, str)
     }
   }
 

@@ -11,9 +11,14 @@
 
 package org.pragmas.OxShow
 
+import org.scalajs.dom.raw.Element
 import scala.scalajs.js
 import scala.scalajs.js.annotation._
 import org.scalajs.dom.raw.HTMLDivElement
+import org.scalajs.dom.raw.HTMLElement
+import scalatags.JsDom.all._
+import org.scalajs.dom
+import org.scalajs.dom.ext._
 
 @JSName("Vimeo.Player")
 @js.native
@@ -30,7 +35,7 @@ class VimeoPlayer(uniqueId: String, options: js.Dynamic = ???) extends js.Object
 @JSExport
 object VideoPlayer extends js.Object {
   
-  val vimeoPlayers = js.Dictionary[VimeoPlayer]() //mutable.Map[String, VimeoPlayer]()
+  val vimeoPlayers = js.Dictionary[VimeoPlayer]()
 
   def newVimeoPlayer(uniqueId: String, name: String, parent: HTMLDivElement, options: js.Dynamic = ???): VimeoPlayer = {
     vimeoPlayers += (name -> new VimeoPlayer(uniqueId, options))
@@ -54,4 +59,43 @@ object VideoPlayer extends js.Object {
     vimeoPlayers(name).parent.style.display = "none"
   }
  
+}
+
+@JSName("smoothScroll")
+@js.native
+object SmoothScroll extends js.Object {
+
+  def init(options: js.Dynamic = ???): Nothing = js.native
+  def animateScroll(anchor: Element, toggle: Element, options: js.Dynamic = ???): Nothing = js.native
+
+}
+
+@ScalaJSDefined
+@JSExport
+object OxUtils extends js.Object {
+
+  def smoothScroll(name: String) = {
+    val a = dom.document.querySelector(s"[name=${name}]")
+    SmoothScroll.animateScroll(a, null)
+  }
+
+  def showElement(dataName: String) = {
+    val e = dom.document.querySelector(s"[data-name=${dataName}]")
+    e.asInstanceOf[HTMLElement].style.display = "block"
+  }
+
+  def hideElement(dataName: String) = {
+    val e = dom.document.querySelector(s"[data-name=${dataName}]")
+    e.asInstanceOf[HTMLElement].style.display = "none"
+  }
+
+  def toggleElement(dataName: String) = {
+    val e = dom.document.querySelector(s"[data-name=${dataName}]")
+    e.asInstanceOf[HTMLElement].style.display match {
+      case "none" => e.asInstanceOf[HTMLElement].style.display = "block"
+      case "block" => e.asInstanceOf[HTMLElement].style.display = "none"
+      case _ => e.asInstanceOf[HTMLElement].style.display = "none"
+    }
+  }
+
 }
