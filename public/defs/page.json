@@ -3,82 +3,71 @@
     "nodes": [
         {
             "links": [],
-            "title": "navigation",
-            "name": "navigation",
+            "title": "node-0",
+            "name": "node-0",
             "assets": [
                 {
-                    "T": ["text", "action"],
-                    "name": "asset2",
-                    "content": "Lindeberg01",
-                    "classNames": ["asset-button","asset-nav"],
+                    "T": ["image", "action"],
+                    "name": "we-are-oslo-logo-image",
+                    "content": "images/we-are-olso_logo.jpg",
+                    "classNames": ["asset-text-default"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('Lindeberg01')"
+                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-1')"
                     },
                     "style": {
                         "position": "fixed",
-                        "left": "1em",
-                        "top": "0em",
-                        "height": "1em",
-                        "width": "auto",
-                        "z-index": "100"
-                    }
-                },
-                {
-                    "T": ["text", "action"],
-                    "name": "asset2",
-                    "content": "Lindeberg02",
-                    "classNames": ["asset-button","asset-nav"],
-                    "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('Lindeberg02')"
-                    },
-                    "style": {
-                        "position": "fixed",
-                        "left": "8em",
-                        "top": "0em",
-                        "height": "1em",
-                        "width": "auto",
-                        "z-index": "100"
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "6em",
+                        "width": "6em"
                     }
                 }
+                
             ]
-        },
+        },        
+        
+        
         {
             "links": [],
-            "title": "Lindeberg01",
-            "name": "Lindeberg01",
+            "title": "node-1",
+            "name": "node-1",
             "assets": [
                 {
-                    "T": ["text"],
-                    "name": "Lindeberg01-Text",
-                    "content": "Lindeberg01",
-                    "classNames": ["asset-button","asset-title"],
+                    "T": ["text", "action"],
+                    "name": "node-1-action",
+                    "content": "⯆",
+                    "classNames": ["asset-text-default", "asset-scroll-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-2')"
+                    },
                     "style": {
                         "position": "relative",
-                        "left": "0.4em",
-                        "top": "19.5em",
-                        "height": "0em",
-                        "width": "6em"
+                        "left": "48%",
+                        "top": "38rem",
+                        "height": "0rem",
+                        "width": "6rem",
+                        "font-size": "4rem"
                     }
                 },
                 {
                     "T": ["html"],
-                    "name": "Lindeberg01-html",
-                    "content": "<div class='content-text'><h3>Vestre Aker</h3><p>Ein båt ligg lågt i fjorden, er tung av gutar, gamlingar, gull og frø av aegopodium podagraria. Biskopen står på berg og tar imot brør og frø og priklar frøa; forsiktig, i bed ramma inn av stein. Dei plantar i rekkjer, med fem centi mellom kvart frø. Frø spirar; ein puls gjennom jorda. Gror opp for kvar femte centimeter, visnar, men kjem att våren etter. Ein puls gjennom åra: Kvar vår er skvallerkålen ny. Ynglar, reiser med vinden, og finn jord der andre ser by, grus, grøft. Podagraria slår rot der andre frø fér. Først fjorden, sidan opp bekken, og vestover, forbi furu, lauvskog. Langs togskinnene er ein æveleg bris av T-banevogner. Ugras klarar vind, svingar og skinnekvin. Skvallerkålen var jo planta; er kultivert. Han blir naturalisert, og tilpassar seg gjennom skiftande årstider, årtier. Aegopodium podagraria står sjølv når elektrisk tog susar forbi og gjennom låg lauvskog. Toget er berre ei humle som stoppar ved stasjonar: Slepp noko av, plukkar noko opp. Holmen møter Hovseter møter Røa, blandar blod og blomstrar. Byfolk sett bu på usannsylege stader. Alt er sivilisasjon så lenge toget går forbi. Tøff tøff over trefjøler. Fjølene ein puls under skinner av jern og skinnene ein navlestreng ein aldri klippar. Ikkje klipper ein graset eller sagar furuer. Nesle, ugras, ljå står i rekkjer langs lina. Vognene sig forbi; ein kvilepuls gjennom dagen.</p></div>",
-                    "classNames": [],
+                    "name": "train-0-text",
+                    "content": "<h1 class='title'>Fra ØSTerås til VESTli</h1><span class='story_by'>a story by:</span><span class='author'> CALIAS </span>",
+                    "classNames": ["asset-text-default", "asset-text-title", "train-0-text"],
                     "style": {
                         "position": "relative",
-                        "left": "1em",
-                        "top": "4em",
-                        "height": "0em",
-                        "width": "40em"
+                        "left": "14.8rem",
+                        "top": "22rem",
+                        "height": "0rem",
+                        "width": "50rem"
                     }
                 },
                 {
                     "T": ["image"],
-                    "name": "Lindeberg01-image",
-                    "content": "images/Lindeberg01.jpg",
+                    "name": "train-0-image",
+                    "content": "images/train-0.jpg",
                     "fullsize": "b:true",
-                    "classNames": [],
+                    "classNames": ["node-1-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
@@ -87,87 +76,285 @@
                         "width": "100%"
                     }
                 }
+
             ]
         },
+
         {
             "links": [],
-            "title": "Lindeberg02",
-            "name": "Lindeberg02",
+            "title": "node-2",
+            "name": "node-2",
             "assets": [
                 {
-                    "T": ["text"],
-                    "name": "Lindeberg02-Text",
-                    "content": "Lindeberg02",
-                    "classNames": ["asset-button","asset-title"], 
+                    "T": ["text", "action"],
+                    "name": "node-2-action",
+                    "content": "⯆",
+                    "classNames": ["asset-text-default", "asset-scroll-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-3')"
+                    },
                     "style": {
                         "position": "relative",
-                        "left": "0.4em",
-                        "top": "19.5em",
-                        "height": "0em",
-                        "width": "6em"
+                        "left": "48%",
+                        "top": "38rem",
+                        "height": "0rem",
+                        "width": "6rem",
+                        "font-size": "4rem"
                     }
                 },
                 {
                     "T": ["html"],
-                    "name": "Lindeberg01-html",
-                    "content": "<div class='content-text'><h3>Vestre Aker</h3><p>Ein båt ligg lågt i fjorden, er tung av gutar, gamlingar, gull og frø av aegopodium podagraria. Biskopen står på berg og tar imot brør og frø og priklar frøa; forsiktig, i bed ramma inn av stein. Dei plantar i rekkjer, med fem centi mellom kvart frø. Frø spirar; ein puls gjennom jorda. Gror opp for kvar femte centimeter, visnar, men kjem att våren etter. Ein puls gjennom åra: Kvar vår er skvallerkålen ny. Ynglar, reiser med vinden, og finn jord der andre ser by, grus, grøft. Podagraria slår rot der andre frø fér. Først fjorden, sidan opp bekken, og vestover, forbi furu, lauvskog. Langs togskinnene er ein æveleg bris av T-banevogner. Ugras klarar vind, svingar og skinnekvin. Skvallerkålen var jo planta; er kultivert. Han blir naturalisert, og tilpassar seg gjennom skiftande årstider, årtier. Aegopodium podagraria står sjølv når elektrisk tog susar forbi og gjennom låg lauvskog. Toget er berre ei humle som stoppar ved stasjonar: Slepp noko av, plukkar noko opp. Holmen møter Hovseter møter Røa, blandar blod og blomstrar. Byfolk sett bu på usannsylege stader. Alt er sivilisasjon så lenge toget går forbi. Tøff tøff over trefjøler. Fjølene ein puls under skinner av jern og skinnene ein navlestreng ein aldri klippar. Ikkje klipper ein graset eller sagar furuer. Nesle, ugras, ljå står i rekkjer langs lina. Vognene sig forbi; ein kvilepuls gjennom dagen.</p></div>",
-                    "classNames": [],
+                    "name": "train-1-text",
+                    "content": "<h2 class='title'>OM PROSJEKTET</h2><p>“Fra ØSTerås til VESTli” er en oppdagelsesreise gjennom Oslo fra Østerås i vest til Vestli i øst, en reise for å besøke ulike nabolag og møte byens varierte befolkning, en reise fra den ene ekstreme utkanten til den andre som til felles kun har t-banens linje nummer 5... </p>",
+                    "classNames": ["asset-text-default"],
                     "style": {
                         "position": "relative",
-                        "left": "1em",
-                        "top": "4em",
+                        "left": "24em",
+                        "top": "12em",
                         "height": "0em",
-                        "width": "40em"
-                    }
-                },
-                {
-                    "T": ["text","action"],
-                    "name": "Lindeberg02-video-play",
-                    "content": "play",
-                    "tooltip": "Play Lindeberg02 video",
-                    "classNames": [
-                        "asset-button",
-                        "asset-title"
-                    ],
-                    "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().hideElement('Lindeberg02-image'); org.pragmas.OxShow.VideoPlayer().show('Lindeberg02-video'); org.pragmas.OxShow.VideoPlayer().play('Lindeberg02-video')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "10em",
-                        "top": "19.5em",
-                        "height": "0em",
-                        "width": "2em"
-                    }
-                },
-                {
-                    "T": ["text","action"],
-                    "name": "Lindeberg02-video-stop",
-                    "content": "stop",
-                    "tooltip": "Stop Lindeberg02 video",
-                    "classNames": [
-                        "asset-button",
-                        "asset-title"
-                    ],
-                    "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().showElement('Lindeberg02-image'); org.pragmas.OxShow.VideoPlayer().hide('Lindeberg02-video'); org.pragmas.OxShow.VideoPlayer().pause('Lindeberg02-video')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "13em",
-                        "top": "19.5em",
-                        "height": "0em",
-                        "width": "2em"
+                        "width": "32em"
                     }
                 },
                 {
                     "T": ["image"],
-                    "name": "Lindeberg02-image",
+                    "name": "train-1-image",
+                    "content": "images/train-1.jpg",
+                    "fullsize": "b:true",
+                    "classNames": ["node-2-background"],
+                    "style": {
+                        "position": "relative",
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "100%",
+                        "width": "100%"
+                    }
+                }
+
+            ]
+        },
+
+        {
+            "links": [],
+            "title": "node-3",
+            "name": "node-3",
+            "assets": [
+                {
+                    "T": ["text", "action"],
+                    "name": "node-3-action",
+                    "content": "⯆",
+                    "classNames": ["asset-text-default", "asset-scroll-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-4')"
+                    },
+                    "style": {
+                        "position": "relative",
+                        "left": "48%",
+                        "top": "38rem",
+                        "height": "0rem",
+                        "width": "6rem",
+                        "font-size": "4rem"
+                    }
+                },
+                {
+                    "T": ["html"],
+                    "name": "station-text",
+                    "content": "<h2 class='title'>Mappa delle stazioni</h2>",
+                    "classNames": ["asset-text-default", "asset-title"],
+                    "style": {
+                        "position": "relative",
+                        "left": "24em",
+                        "top": "12em",
+                        "height": "0em",
+                        "width": "20em"
+                    }
+                },
+                {
+                    "T": ["image"],
+                    "name": "station-image",
+                    "content": "images/train-1.jpg",
+                    "fullsize": "b:true",
+                    "classNames": ["node-3-background"],
+                    "style": {
+                        "position": "relative",
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "100%",
+                        "width": "100%"
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            "links": [],
+            "title": "node-4",
+            "name": "node-4",
+            "assets": [
+                {
+                    "T": ["text", "action"],
+                    "name": "node-4-action",
+                    "content": "⯆",
+                    "classNames": ["asset-text-dark", "asset-scroll-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-5')"
+                    },
+                    "style": {
+                        "position": "relative",
+                        "left": "48%",
+                        "top": "38rem",
+                        "height": "0rem",
+                        "width": "6rem",
+                        "font-size": "4rem"
+                    }
+                },
+                {
+                    "T": ["html"],
+                    "name": "blank-1-text",
+                    "content": "<h2 class='title'>VESTRE AKER</h2><p>“Ein båt ligg lågt i fjorden, er tung av gutar, gamlingar, gull og frø av aegopodium podagraria. Biskopen står på berg og tar imot brør og frø og priklar frøa; forsiktig, i bed ramma inn av stein. Dei plantar i rekkjer, med fem centi mellom kvart frø. Frø spirar; ein puls gjennom jorda. Gror opp for kvar femte centimeter, visnar, men kjem att våren etter. Ein puls gjennom åra: Kvar vår er skvallerkålen ny. Ynglar, reiser med vinden, og finn jord der andre ser by, grus, grøft. Podagraria slår rot der andre frø fér. Først fjorden, sidan opp bekken, og vestover, forbi furu, lauvskog. Langs togskinnene er ein æveleg bris av T-banevogner. Ugras klarar vind, svingar og skinnekvin. Skvallerkålen var jo planta; er kultivert. Han blir naturalisert, og tilpassar seg gjennom skiftande årstider, årtier. Aegopodium podagraria står sjølv når elektrisk tog susar forbi og gjennom låg lauvskog. Toget er berre ei humle som stoppar ved stasjonar: Slepp noko av, plukkar noko opp. Holmen møter Hovseter møter Røa, blandar blod og blomstrar. Byfolk sett bu på usannsylege stader. Alt er sivilisasjon så lenge toget går forbi. Tøff tøff over trefjøler. Fjølene ein puls under skinner av jern og skinnene ein navlestreng ein aldri klippar. Ikkje klipper ein graset eller sagar furuer. Nesle, ugras, ljå står i rekkjer langs lina. Vognene sig forbi; ein kvilepuls gjennom dagen.”</p>",
+                    "classNames": ["asset-text-dark"],
+                    "style": {
+                        "position": "relative",
+                        "left": "14em",
+                        "top": "6em",
+                        "height": "0em",
+                        "width": "50em"
+                    }
+                },
+                {
+                    "T": ["image"],
+                    "name": "blank-1-image",
+                    "content": "images/blank.png",
+                    "fullsize": "b:true",
+                    "classNames": ["node-4-background"],
+                    "style": {
+                        "position": "relative",
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "100%",
+                        "width": "100%"
+                    }
+                }
+
+            ]
+        },
+
+
+        {
+            "links": [],
+            "title": "node-5",
+            "name": "node-5",
+            "assets": [
+                {
+                    "T": ["text", "action"],
+                    "name": "node-5-action",
+                    "content": "⯆",
+                    "classNames": ["asset-text-default", "asset-scroll-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-6')"
+                    },
+                    "style": {
+                        "position": "relative",
+                        "left": "48%",
+                        "top": "38rem",
+                        "height": "0rem",
+                        "width": "6rem",
+                        "font-size": "4rem"
+                    }
+                },
+                {
+                    "T": ["html"],
+                    "name": "station-1-text",
+                    "content": "<h2 class='title'>Lindeberg</h2>",
+                    "classNames": ["asset-text-default", "asset-title"],
+                    "style": {
+                        "position": "relative",
+                        "left": "32em",
+                        "top": "34em",
+                        "height": "0em",
+                        "width": "20em"
+                    }
+                },
+                {
+                    "T": ["image"],
+                    "name": "station-1-image",
+                    "content": "images/Lindeberg01.jpg",
+                    "fullsize": "b:true",
+                    "classNames": ["node-5-background"],
+                    "style": {
+                        "position": "relative",
+                        "left": "0px",
+                        "top": "0px",
+                        "height": "100%",
+                        "width": "100%"
+                    }
+                }
+
+            ]
+        },
+
+        {
+            "links": [],
+            "title": "node-6",
+            "name": "node-6",
+            "assets": [
+                {
+                    "T": ["text", "action"],
+                    "name": "node-6-play",
+                    "content": "⯈",
+                    "tooltip": "Play Video",
+                    "classNames": ["asset-text-default", "asset-play-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().hideElement('station-1-image'); org.pragmas.OxShow.VideoPlayer().show('station-1-video'); org.pragmas.OxShow.VideoPlayer().play('station-1-video')"
+                    },
+                    "style": {
+                        "position": "fixed",
+                        "left": "6rem",
+                        "top": "0rem",
+                        "height": "0rem",
+                        "width": "0rem",
+                        "font-size": "4rem"
+                    }
+                },
+                {
+                    "T": ["text", "action"],
+                    "name": "node-6-pause",
+                    "content": "⯀",
+                    "tooltip": "Pause Video",
+                    "classNames": ["asset-text-default", "asset-play-action"],
+                    "options": {
+                        "click": "org.pragmas.OxShow.OxUtils().showElement('station-1-image'); org.pragmas.OxShow.VideoPlayer().hide('station-1-video'); org.pragmas.OxShow.VideoPlayer().pause('station-1-video')"
+                    },
+                    "style": {
+                        "position": "fixed",
+                        "left": "8.6rem",
+                        "top": "0rem",
+                        "height": "0rem",
+                        "width": "0rem",
+                        "font-size": "4rem"
+                    }
+                },
+                {
+                    "T": ["html"],
+                    "name": "station-1-text",
+                    "content": "<h2 class='title'>Nome e cognome</h2>",
+                    "classNames": ["asset-text-default", "asset-title"],
+                    "style": {
+                        "position": "relative",
+                        "left": "24em",
+                        "top": "34em",
+                        "height": "0em",
+                        "width": "32em"
+                    }
+                },
+                {
+                    "T": ["image"],
+                    "name": "station-1-image",
                     "content": "images/Lindeberg02.jpg",
                     "fullsize": "b:true",
-                    "classNames": [],
+                    "classNames": ["node-5-background"],
                     "style": {
-                        
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
@@ -177,7 +364,7 @@
                 },
                 {
                     "T": ["video","vimeo"],
-                    "name": "Lindeberg02-video",
+                    "name": "station-1-video",
                     "content": "n:200653452",
                     "fullsize": "b:true",
                     "options": {
@@ -197,6 +384,7 @@
                         "width": "100%"
                     }
                 }
+
             ]
         }
     ]

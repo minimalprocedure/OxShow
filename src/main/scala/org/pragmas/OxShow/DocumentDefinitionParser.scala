@@ -18,20 +18,24 @@ object DocAsset {
   val EMPTY_LIST = List()
   val EMPTY_MAP = Map[String, Any]()
 
-  val TIMAGE = List("image")
-  val TIMAGE_ACTION = List(TIMAGE(0), "action")
+  val TDOC = List[String]("document")
 
-  val THTML = List("html")
-  val TTEXT = List("text")
-  val TTEXT_ACTION = List(TTEXT(0), "action")
-  val TTEXT_LOAD = List(TTEXT(0), "load")
+  val TIMAGE = List[String]("image")
+  val TIMAGE_ACTION = List[String](TIMAGE(0), "action")
 
-  val TAUDIO = List("audio")
-  val TVIDEO = List("video")
+  val THTML = List[String]("html")
+  val THTML_CONTENT = List[String](THTML(0), "content")
+  val THTML_ACTION = List[String](THTML(0), "action")
+  val TTEXT = List[String]("text")
+  val TTEXT_ACTION = List[String](TTEXT(0), "action")
+  val TTEXT_LOAD = List[String](TTEXT(0), "load")
 
-  val TVIDEO_VIMEO = List(TVIDEO(0), "vimeo")
-  val TBACKGROUND = List("background")
-  val TGENERIC = List("generic")
+  val TAUDIO = List[String]("audio")
+  val TVIDEO = List[String]("video")
+
+  val TVIDEO_VIMEO = List[String](TVIDEO(0), "vimeo")
+  val TBACKGROUND = List[String]("background")
+  val TGENERIC = List[String]("generic")
 }
 
 object DocStyle {

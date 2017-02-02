@@ -4,29 +4,25 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OxShow</title>
-    
-    <style>
+    <title> "Fra ØSTerås til VESTli" a story by: CALIAS </title>
 
-      .docAsset {
-        border: 1px solid red;
-      }   
-     
-    </style>
-    
+    <link rel="stylesheet" href="stylesheets/vendor/simplebar/simplebar.css" />    
     <link rel="stylesheet" href="stylesheets/vendor/foundation/foundation.css" />
     <link rel="stylesheet" href="stylesheets/application.css" />
   </head>
   <body>
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="javascripts/vendor/simplebar/simplebar.js"></script>      
     <script src="javascripts/vendor/foundation/jquery.js"></script>
     <script src="javascripts/vendor/foundation/what-input.js"></script>
     <script src="javascripts/vendor/foundation/foundation.min.js"></script>
     <script src="javascripts/vendor/smooth-scroll/smooth-scroll.js"></script>
     <script type="text/javascript" src="../target/scala-2.12/oxshow-fastopt.js"></script>
-    <script type="text/javascript">           
+    <script type="text/javascript">
+      console.log("org.pragmas.OxShow.MainApp().main()");
       org.pragmas.OxShow.MainApp().main();
-      $(document).foundation(); 
+      console.log("$(document).foundation()");
+      $(document).foundation();
      </script>
   </body>
 </html>

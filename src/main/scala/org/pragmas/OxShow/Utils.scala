@@ -84,5 +84,9 @@ object Utils {
   }
 
   def remSpace(s: String) = s.replaceAll(" ", "_")
+
+  def assetClass(assetT: List[String]): String = s"""asset-${assetT.mkString("-")}"""
+
+  def assetT(assetT: List[String]): String = assetT.mkString(".")
 }
 

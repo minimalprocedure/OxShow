@@ -44,12 +44,14 @@ class DocumentProducer(doc: Document) {
   def prepareActionAsset(asset: DocAsset, parent: HTMLDivElement) = {
     val options = asset.options.get
     val TTEXT = DocAsset.TTEXT.head
+    val THTML= DocAsset.THTML.head
     val TIMAGE = DocAsset.TIMAGE.head
 
     val (fullsize, styleDim, w, h) = isFullSize(asset)
 
     val assetContainer = asset.T.head match {
       case TTEXT => div(data.fullsize:=fullsize.toString, style:=styleDim)(asset.content).render
+      case THTML => div(data.fullsize:=fullsize.toString, style:=styleDim)(raw(asset.content)).render
       case TIMAGE => img(data.fullsize:=fullsize.toString, style:=styleDim)(src := asset.content).render
       case _ => div(data.fullsize:=fullsize.toString, style:=styleDim)(asset.content).render
     }
@@ -78,10 +80,10 @@ class DocumentProducer(doc: Document) {
       options.height = h
     }
 
-    parent.appendChild(div(id := uniqueId, cls := "vimeo-player",
+    parent.appendChild(div(id:=uniqueId, cls:= Utils.assetClass(DocAsset.TVIDEO_VIMEO) + "-player",
       data.video.fullsize:=fullsize.toString, data.vimeo.id := Utils.strIsInt(asset.content)).render)
 
-    val trigger = div(cls := "vimeo-trigger",
+    val trigger = div(cls := Utils.assetClass(DocAsset.TVIDEO_VIMEO) + "-trigger",
       onshow :=  { VideoPlayer.newVimeoPlayer(uniqueId, asset.name, parent, options) }).render
     parent.appendChild(trigger)
 
@@ -92,14 +94,14 @@ class DocumentProducer(doc: Document) {
     val fullsize = Utils.strIsBool(asset.fullsize.getOrElse(DocAsset.BFALSE))
     if(fullsize) {
       val (w, h) = Utils.fullAreaDim
-      (fullsize, s"width:${w}px;height:${h}px;", w, h)
+      (fullsize, s"width:${w}px; height:${h}px;", w, h)
     } else (fullsize, "", 0, 0)
   }
 
   def resizeFullsizes = {
     dom.window.onresize = (ev: dom.UIEvent) => {
       val (w, h) = Utils.fullAreaDim
-      val assets = dom.document.getElementsByClassName("doc-asset")
+      val assets = dom.document.getElementsByClassName(Utils.assetClass(DocAsset.TDOC))
 
       assets.foreach { node: Node =>
         val asset = node.firstChild.asInstanceOf[HTMLElement]
@@ -132,12 +134,13 @@ class DocumentProducer(doc: Document) {
   def prepareSimpleAsset(asset: DocAsset, parent: HTMLDivElement) = {
     val (fullsize, styleDim, w, h) = isFullSize(asset)
     val assetContainer = asset.T match {
+
       case DocAsset.TTEXT => {
         val (prot, content) = Utils.getContentProtocol(asset.content)
         prot match {
           case ContentProtocols.HTTP =>
             val uid = Utils.uniqueId
-            val dv = div(id:=uid, cls:="text-asset-prot-http")
+            val dv = div(id:=uid, cls:=Utils.assetClass(DocAsset.TTEXT)+"-prot-http")
             insertByHttp(uid, content)
             div(data.fullsize:=fullsize.toString, style:=styleDim)(dv).render
           case ContentProtocols.STRING =>
@@ -146,6 +149,9 @@ class DocumentProducer(doc: Document) {
       }
       case DocAsset.THTML =>
         div(data.fullsize:=fullsize.toString, style:=styleDim)(raw(asset.content)).render
+      case DocAsset.THTML_CONTENT =>
+        val content = div(cls:=Utils.assetClass(DocAsset.THTML_CONTENT))(raw(asset.content))
+        div(data.fullsize:=fullsize.toString, style:=styleDim, data.simplebar:=1)(content).render
       case DocAsset.TIMAGE =>
         img(data.fullsize:=fullsize.toString, style:=styleDim)(src := asset.content).render
       case _ =>
@@ -156,22 +162,26 @@ class DocumentProducer(doc: Document) {
 
   def prepareAsset(asset: DocAsset, parent: HTMLDivElement, zIndex: Int = 0) = {
 
-    val assetContainer = div(cls := s"doc-asset ${asset.name} " + prepareClass(asset),
+    val assetContainer = div(cls := Utils.assetClass(DocAsset.TDOC) + s" ${asset.name} " + prepareClass(asset),
       data.name := asset.name,
-      data.T := asset.T.mkString("."),
+      data.T := Utils.assetT(asset.T),
       data.UUID := Utils.uuid,
-      style := prepareStyle(asset) + s";z-index:${zIndex}",
+      style := prepareStyle(asset) + s"; z-index:${zIndex}",
       title := asset.tooltip.getOrElse("")
     ).render
 
     parent.appendChild(assetContainer)
 
     asset.T match {
-      case DocAsset.TIMAGE | DocAsset.TTEXT | DocAsset.THTML | DocAsset.TVIDEO =>
+      case DocAsset.TIMAGE |
+          DocAsset.TTEXT |
+          DocAsset.THTML |
+          DocAsset.THTML_CONTENT |
+          DocAsset.TVIDEO =>
         prepareSimpleAsset(asset, assetContainer)
-      case DocAsset.TIMAGE_ACTION =>
-        prepareActionAsset(asset, assetContainer)
-      case DocAsset.TTEXT_ACTION =>
+      case DocAsset.TIMAGE_ACTION |
+          DocAsset.TTEXT_ACTION |
+          DocAsset.THTML_ACTION =>
         prepareActionAsset(asset, assetContainer)
       case DocAsset.TVIDEO_VIMEO =>
         prepareVimeo(asset, assetContainer)
