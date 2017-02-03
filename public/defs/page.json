@@ -1,4 +1,4 @@
-{
+var OXPAGE = {
     "name": "calias",
     "nodes": [
         {
@@ -12,14 +12,13 @@
                     "content": "images/we-are-olso_logo.jpg",
                     "classNames": ["asset-text-default"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-1')"
+                        "click": ["zenScroll('node-1')"].join(';')
                     },
                     "style": {
                         "position": "fixed",
-                        "left": "0px",
-                        "top": "0px",
                         "height": "6em",
-                        "width": "6em"
+                        "width": "6em",
+                        "margin": "0 auto"
                     }
                 }
                 
@@ -38,7 +37,7 @@
                     "content": "⯆",
                     "classNames": ["asset-text-default", "asset-scroll-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-2')"
+                        "click": "zenScroll('node-2')"
                     },
                     "style": {
                         "position": "relative",
@@ -66,14 +65,13 @@
                     "T": ["image"],
                     "name": "train-0-image",
                     "content": "images/train-0.jpg",
-                    "fullsize": "b:true",
                     "classNames": ["node-1-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 }
 
@@ -91,7 +89,7 @@
                     "content": "⯆",
                     "classNames": ["asset-text-default", "asset-scroll-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-3')"
+                        "click": "zenScroll('node-3')"
                     },
                     "style": {
                         "position": "relative",
@@ -119,14 +117,13 @@
                     "T": ["image"],
                     "name": "train-1-image",
                     "content": "images/train-1.jpg",
-                    "fullsize": "b:true",
-                    "classNames": ["node-2-background"],
+                     "classNames": ["node-2-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 }
 
@@ -144,7 +141,7 @@
                     "content": "⯆",
                     "classNames": ["asset-text-default", "asset-scroll-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-4')"
+                        "click": "zenScroll('node-4')"
                     },
                     "style": {
                         "position": "relative",
@@ -172,14 +169,13 @@
                     "T": ["image"],
                     "name": "station-image",
                     "content": "images/train-1.jpg",
-                    "fullsize": "b:true",
                     "classNames": ["node-3-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 }
 
@@ -198,7 +194,7 @@
                     "content": "⯆",
                     "classNames": ["asset-text-dark", "asset-scroll-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-5')"
+                        "click": "zenScroll('node-5')"
                     },
                     "style": {
                         "position": "relative",
@@ -226,14 +222,13 @@
                     "T": ["image"],
                     "name": "blank-1-image",
                     "content": "images/blank.png",
-                    "fullsize": "b:true",
                     "classNames": ["node-4-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 }
 
@@ -252,7 +247,7 @@
                     "content": "⯆",
                     "classNames": ["asset-text-default", "asset-scroll-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().smoothScroll('node-6')"
+                        "click": "zenScroll('node-6')"
                     },
                     "style": {
                         "position": "relative",
@@ -264,13 +259,26 @@
                     }
                 },
                 {
+                    "T": ["html", "content"],
+                    "name": "station-1-text",
+                    "content": "<br><h2 class='title'>Vestli - endepunktet</h2><p>Utbygging av Groruddalen (som ikke hadde fått det navnet ennå) fra og med 1950-årene var en løsning på boligmangelen i hovedstaden. Ja, i 1960 var trangboddhet og boligmangel fortsatt et omfattende problem i Oslo. Videre representerte utbyggingen av en mer bymessig bebyggelse i disse tidligere jordbruksområdene en reell kvalitetsheving ettersom mange kunne flytte fra dårlige boforhold i indre øst til moderne boliger her i ytre nordøst. Samtidig som en bygde nye boligområder lenger og lenger ut fra sentrum, bygde kommunen ut t-banen. Disse østgående t-banelinjene, inkludert linje 5 til Vestli, ble bygget for å frakte arbeiderne i de nye drabantbyene fra hjemmet her ute til arbeidsplassene som i stor grad fortsatt lå i sentrum. Den langt eldre Holmenkollbanen ble på sin side bygd for å frakte borgerskapet fra boligene nær sentrum til fritidsarenaer som Frognerseteren. Den vestlige Holmenkollbanen og den østlige Vestlibanen hadde dermed to ulike funksjoner og fraktet to ulike grupper: Arbeidere på østkanten og middel- og overklassen på vestkanten. Passasjerene på vestsiden har i dag fortsatt i gjennomsnitt langt høyere inntekt enn de på andre siden av byen, men nå er det en ytterligere forskjell på hvem som reiser vest- og hvem som reiser østover: Går du på banen på Vestli vil du se at mange i vognen kan sies å ha bakgrunn fra et ikke-europeisk land. Det synlige mangfoldet på østsiden og det mer ”homogene” inntrykket på vestkanten er en gjenspeiling av at Oslo ikke bare er en økonomisk, men også en etnisk delt by.</p><p>Om en går av banen på Vestli stasjon (fra 1975) og raskt forlater det lille senteret med en nabolagspub og en matbutikk kommer du til de kjente eller stigmatiserte terrasseblokkene samt en rekke rekkehus. Alt bygd av Selvaag mellom 1967 og 1974. Totalt er det her rundt 4500 boliger, inkludert cirka 500 rekkehus. Da tanken var at disse drabantbyene skulle være små, men mer eller mindre selvforsynte samfunn, er det foruten boliger og noen butikker også skoler, barnehager og diverse idrettstilbud som fotballbaner og en slalåmbakke i nærområdet. Vestli hører i dag inn under bydel Stovner. Blokkene i bydelen rommer mange store leiligheter samtidig som prisene er blant de klart laveste i Oslo.1 Det er ikke bare utenforstående som tilskriver blokkene og beboerne og der et ”tvilsomt” rykte, også mange groruddalsbeboere som selv bor i hus trekker skillelinjer mellom dem selv og de som bor i blokk. At blokker og blokkbeboere har et mer eller mindre tvilsomt rykte, er ikke noe nytt. Kort tid etter at de første boligblokkene ble bygd Groruddalen i etterkrigstiden, ble de sagt å utgjøre dårlige oppvekstmiljøer for barn. Blokkleilighet ble sett på som et alternativ for de som ikke hadde råd til noe ”bedre”. I dag blir blokkene i Groruddalen i tillegg også assosiert med ”innvandrere”. For de som bor i blokk, er det likevel mange som trives utmerket og ikke kunne tenke seg en annen boform. Interessant nok er blokker ”høystatus” om de er moderne og ligger i sentrum. Mens Barcode og andre sentrumsblokker blir hyllet for en spennende arkitektur og representere en god byutvikling (= kompakt by), blir Groruddalens blokker med jevne mellomrom foreslått revet til fordel for rekkehus eller eneboliger. Hvorfor er det sånn?</p>",
+                    "classNames": ["asset-text-default", "asset-title"],
+                    "style": {
+                        "position": "relative",
+                        "left": "9rem",
+                        "top": "0rem",
+                        "height": "0rem",
+                        "width": "60rem"
+                    }
+                },
+                {
                     "T": ["html"],
                     "name": "station-1-text",
                     "content": "<h2 class='title'>Lindeberg</h2>",
                     "classNames": ["asset-text-default", "asset-title"],
                     "style": {
                         "position": "relative",
-                        "left": "32em",
+                        "left": "30em",
                         "top": "34em",
                         "height": "0em",
                         "width": "20em"
@@ -280,14 +288,12 @@
                     "T": ["image"],
                     "name": "station-1-image",
                     "content": "images/Lindeberg01.jpg",
-                    "fullsize": "b:true",
                     "classNames": ["node-5-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
-                        "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 }
 
@@ -306,15 +312,18 @@
                     "tooltip": "Play Video",
                     "classNames": ["asset-text-default", "asset-play-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().hideElement('station-1-image'); org.pragmas.OxShow.VideoPlayer().show('station-1-video'); org.pragmas.OxShow.VideoPlayer().play('station-1-video')"
+                        "click": ["org.pragmas.OxShow.OxUtils().hideElement('station-1-image')",
+                                  "org.pragmas.OxShow.VideoPlayer().show('station-1-video')",
+                                  "org.pragmas.OxShow.VideoPlayer().play('station-1-video')"].join(";")
                     },
                     "style": {
                         "position": "fixed",
-                        "left": "6rem",
                         "top": "0rem",
                         "height": "0rem",
                         "width": "0rem",
-                        "font-size": "4rem"
+                        "font-size": "4rem",
+                        "margin": "0em auto",
+                        "padding-left": "6rem"
                     }
                 },
                 {
@@ -324,15 +333,18 @@
                     "tooltip": "Pause Video",
                     "classNames": ["asset-text-default", "asset-play-action"],
                     "options": {
-                        "click": "org.pragmas.OxShow.OxUtils().showElement('station-1-image'); org.pragmas.OxShow.VideoPlayer().hide('station-1-video'); org.pragmas.OxShow.VideoPlayer().pause('station-1-video')"
+                        "click": ["org.pragmas.OxShow.OxUtils().showElement('station-1-image')",
+                                  "org.pragmas.OxShow.VideoPlayer().hide('station-1-video')",
+                                  "org.pragmas.OxShow.VideoPlayer().pause('station-1-video')"].join(";")
                     },
                     "style": {
                         "position": "fixed",
-                        "left": "8.6rem",
                         "top": "0rem",
                         "height": "0rem",
                         "width": "0rem",
-                        "font-size": "4rem"
+                        "font-size": "4rem",
+                        "margin": "0em auto",
+                        "padding-left": "8.6rem"
                     }
                 },
                 {
@@ -352,26 +364,25 @@
                     "T": ["image"],
                     "name": "station-1-image",
                     "content": "images/Lindeberg02.jpg",
-                    "fullsize": "b:true",
                     "classNames": ["node-5-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 },
                 {
                     "T": ["video","vimeo"],
                     "name": "station-1-video",
                     "content": "n:200653452",
-                    "fullsize": "b:true",
                     "options": {
                         "title": "b:false",
                         "byline": "b:false",
                         "color": "ffff00",
-                        "width": "auto",
+                        "height": "720",
+                        "width": "1280",
                         "autoplay": "b:false"
                     },
                     "classNames": [],
@@ -380,8 +391,8 @@
                         "position": "relative",
                         "left": "0px",
                         "top": "0px",
-                        "height": "100%",
-                        "width": "100%"
+                        "height": "720px",
+                        "width": "1280px"
                     }
                 }
 

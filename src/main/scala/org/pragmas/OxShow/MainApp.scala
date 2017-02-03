@@ -10,14 +10,11 @@
 
 package org.pragmas.OxShow
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import macrocompat.bundle
 import scala.scalajs.js.JSApp
-import scala.util.{Failure, Success}
-
+import scala.scalajs.js.annotation._
+import org.scalajs.dom.raw.HTMLElement
 import org.scalajs.dom
-import org.scalajs.dom.ext._
-import org.scalajs.dom.raw.XMLHttpRequest
 import scalatags.JsDom.all._
 
 object Paths {
@@ -28,30 +25,23 @@ object Paths {
 
 object MainApp extends JSApp {
 
-  def loadDefPage(name: String = "page"): Future[XMLHttpRequest] = {
-    Ajax.get(s"${Paths.defs}/${name}.json")
-      .andThen {
-        case Success(xhr) => {
-          preparePage(xhr.responseText)
-        }
-        case Failure(f) => prepareErrorPage
-      }
-  }
-
-  def prepareErrorPage: Unit = {
-    dom.document.body.innerHTML = "ERROR"
-  }
+  var container: HTMLElement = _
 
   def preparePage(defJson: String): Unit = {
     val ddp = new DocumentDefinitionParser(defJson)
     val dp = new DocumentProducer(ddp.doc)
-    val dpc = div(cls:="document-producer-container").render
-    dom.document.body.appendChild(dpc)
+    val dpc = div(cls:="document-producer-container").render    
+    this.container.appendChild(dpc)
     dp.pageContent(dpc)
   }
 
+  @JSExport
+  def load(id: String, document: String) = {
+    this.container = dom.document.getElementById(id).asInstanceOf[HTMLElement]
+    preparePage(document)
+  }
+
   def main() : Unit = {
-    loadDefPage("page")
   }
 
 }

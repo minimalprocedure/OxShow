@@ -90,7 +90,6 @@ class DocumentProducer(doc: Document) {
   }
 
   def isFullSize(asset: DocAsset): (Boolean, String, Double, Double)= {
-    println(asset.fullsize.getOrElse(DocAsset.BFALSE))
     val fullsize = Utils.strIsBool(asset.fullsize.getOrElse(DocAsset.BFALSE))
     if(fullsize) {
       val (w, h) = Utils.fullAreaDim
@@ -150,8 +149,8 @@ class DocumentProducer(doc: Document) {
       case DocAsset.THTML =>
         div(data.fullsize:=fullsize.toString, style:=styleDim)(raw(asset.content)).render
       case DocAsset.THTML_CONTENT =>
-        val content = div(cls:=Utils.assetClass(DocAsset.THTML_CONTENT))(raw(asset.content))
-        div(data.fullsize:=fullsize.toString, style:=styleDim, data.simplebar:=1)(content).render
+        val content = div(cls:=Utils.assetClass(DocAsset.THTML_CONTENT), data.simplebar:=1)(raw(asset.content))
+        div(data.fullsize:=fullsize.toString, style:=styleDim)(content).render
       case DocAsset.TIMAGE =>
         img(data.fullsize:=fullsize.toString, style:=styleDim)(src := asset.content).render
       case _ =>
@@ -194,7 +193,7 @@ class DocumentProducer(doc: Document) {
   def assets(node: DocNode, parent: HTMLDivElement, zIndex: Int = 0) = {    
     val nodeContainer = div(cls:=s"node-container ${node.name}", data.name:=node.name, style:=s"z-index:${zIndex}").render
     nodeContainer.appendChild(
-      a(cls:="node-container-anchor", data.t:="node-container-anchor", name:=node.name, style:="display:block;").render)
+      a(cls:="node-container-anchor", data.t:="node-container-anchor", data.name.anchor:=node.name, data.scroll:=1, style:="display:block;").render)
     parent.appendChild(nodeContainer)
     node.assets.foldLeft(node.assets.length + 10)((index, asset) => {
       prepareAsset(asset, nodeContainer, index + zIndex * 10)

@@ -8,14 +8,27 @@
 }
 
 body {
+   
+    overflow: hidden;
+    background: #000000 !important;
+}
+
+#oxshow-document {
+    position:fixed;
+    overflow: auto;
+    width: 1293px;
+    height: 720px;
+    margin: 0em auto;
     
-    overflow: hidden
+}
+
+.node-container {
 }
 
 .asset-document {
-    margin: 0px !important;
-    padding: 0px !important;
-    background-color: transparent !important;
+    margin: 0px; /*!important;*/
+    padding: 0px; /*!important;*/
+    background-color: transparent; /*!important;*/
 }
 
 .asset-document[data-t="text.action"] {
@@ -49,7 +62,7 @@ body {
 }
 
 .asset-html-content {
-    height: 10em;
+    height: 30em;
 }
 
 
@@ -165,18 +178,4 @@ node 5
 
 
 
-
-
-.Lindeberg01-html p {
-    color: #ffffff;
-    font-size: 0.9em;
-    text-shadow: 1px 1px #222222;
-}
-
-.Lindeberg01-html h3 {
-    color: #ffffff;
-    font-size: 1.4em;
-    font-weight: bold;
-    text-shadow: 1px 1px #222222;
-}
 
