@@ -1,8 +1,8 @@
 /******************************************************************************
- 
+
  App: OxShow
  source: DocumentDefinitionParser.scala
- Developers: Massimo Maria Ghisalberti <massimo.ghisalberti@pragmas.org> 
+ Developers: Massimo Maria Ghisalberti <massimo.ghisalberti@pragmas.org>
  Date: 2017-01-25
  Licence: Apache 2.0
 
@@ -57,8 +57,7 @@ case class DocNode(
   name: String = DocNode.EMPTY,
   title: String = DocNode.EMPTY,
   assets : List[DocAsset] = DocNode.EMPTY_ASSETS,
-  //background: DocAsset = DocAsset(DocAsset.TBACKGROUND),
-  links : List[DocNode] = DocNode.EMPTY_NODES
+  links : Option[List[Map[String, String]]] = Some(DocAsset.EMPTY_LIST) //Some(DocStyle.EMPTY)
 )
 
 case class Document(
@@ -95,4 +94,3 @@ class DocumentDefinitionParser(jsonDoc: String = "{}") {
   }
 
 }
-

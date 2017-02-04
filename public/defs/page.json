@@ -1,10 +1,14 @@
 var OXPAGE = {
     "name": "calias",
     "nodes": [
+
         {
-            "links": [],
-            "title": "node-0",
-            "name": "node-0",
+            "title": "node-1",
+            "name": "node-1",
+            "links": [
+                {"text": "⯅", "href": "javascript:zenScroll('node-1')", "class": "link-to-node-up light-color"},
+                {"text": "⯆", "href": "javascript:zenScroll('node-2')", "class": "link-to-node-down light-color"}
+            ],
             "assets": [
                 {
                     "T": ["image", "action"],
@@ -17,35 +21,7 @@ var OXPAGE = {
                     "style": {
                         "position": "fixed",
                         "height": "6em",
-                        "width": "6em",
-                        "margin": "0 auto"
-                    }
-                }
-                
-            ]
-        },        
-        
-        
-        {
-            "links": [],
-            "title": "node-1",
-            "name": "node-1",
-            "assets": [
-                {
-                    "T": ["text", "action"],
-                    "name": "node-1-action",
-                    "content": "⯆",
-                    "classNames": ["asset-text-default", "asset-scroll-action"],
-                    "options": {
-                        "click": "zenScroll('node-2')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "48%",
-                        "top": "38rem",
-                        "height": "0rem",
-                        "width": "6rem",
-                        "font-size": "4rem"
+                        "width": "6em"
                     }
                 },
                 {
@@ -79,27 +55,13 @@ var OXPAGE = {
         },
 
         {
-            "links": [],
             "title": "node-2",
             "name": "node-2",
+            "links": [
+                {"text": "⯅", "href": "javascript:zenScroll('node-1')", "class": "link-to-node-up light-color"},
+                {"text": "⯆", "href": "javascript:zenScroll('node-3')", "class": "link-to-node-down light-color"}
+            ],
             "assets": [
-                {
-                    "T": ["text", "action"],
-                    "name": "node-2-action",
-                    "content": "⯆",
-                    "classNames": ["asset-text-default", "asset-scroll-action"],
-                    "options": {
-                        "click": "zenScroll('node-3')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "48%",
-                        "top": "38rem",
-                        "height": "0rem",
-                        "width": "6rem",
-                        "font-size": "4rem"
-                    }
-                },
                 {
                     "T": ["html"],
                     "name": "train-1-text",
@@ -117,7 +79,7 @@ var OXPAGE = {
                     "T": ["image"],
                     "name": "train-1-image",
                     "content": "images/train-1.jpg",
-                     "classNames": ["node-2-background"],
+                    "classNames": ["node-2-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
@@ -131,27 +93,13 @@ var OXPAGE = {
         },
 
         {
-            "links": [],
             "title": "node-3",
             "name": "node-3",
+            "links": [
+                {"text": "⯅", "href": "javascript:zenScroll('node-2')", "class": "link-to-node-up light-color"},
+                {"text": "⯆", "href": "javascript:zenScroll('node-4')", "class": "link-to-node-down light-color"}
+            ],
             "assets": [
-                {
-                    "T": ["text", "action"],
-                    "name": "node-3-action",
-                    "content": "⯆",
-                    "classNames": ["asset-text-default", "asset-scroll-action"],
-                    "options": {
-                        "click": "zenScroll('node-4')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "48%",
-                        "top": "38rem",
-                        "height": "0rem",
-                        "width": "6rem",
-                        "font-size": "4rem"
-                    }
-                },
                 {
                     "T": ["html"],
                     "name": "station-text",
@@ -184,27 +132,13 @@ var OXPAGE = {
 
 
         {
-            "links": [],
             "title": "node-4",
             "name": "node-4",
+            "links": [
+                {"text": "⯅", "href": "javascript:zenScroll('node-3')", "class": "link-to-node-up dark-color"},
+                {"text": "⯆", "href": "javascript:zenScroll('node-5')", "class": "link-to-node-down dark-color"}
+            ],
             "assets": [
-                {
-                    "T": ["text", "action"],
-                    "name": "node-4-action",
-                    "content": "⯆",
-                    "classNames": ["asset-text-dark", "asset-scroll-action"],
-                    "options": {
-                        "click": "zenScroll('node-5')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "48%",
-                        "top": "38rem",
-                        "height": "0rem",
-                        "width": "6rem",
-                        "font-size": "4rem"
-                    }
-                },
                 {
                     "T": ["html"],
                     "name": "blank-1-text",
@@ -237,27 +171,13 @@ var OXPAGE = {
 
 
         {
-            "links": [],
             "title": "node-5",
             "name": "node-5",
+            "links": [
+                {"text": "⯅", "href": "javascript:zenScroll('node-4')", "class": "link-to-node-up light-color"},
+                {"text": "⯆", "href": "javascript:zenScroll('node-6')", "class": "link-to-node-down light-color"}
+            ],
             "assets": [
-                {
-                    "T": ["text", "action"],
-                    "name": "node-5-action",
-                    "content": "⯆",
-                    "classNames": ["asset-text-default", "asset-scroll-action"],
-                    "options": {
-                        "click": "zenScroll('node-6')"
-                    },
-                    "style": {
-                        "position": "relative",
-                        "left": "48%",
-                        "top": "38rem",
-                        "height": "0rem",
-                        "width": "6rem",
-                        "font-size": "4rem"
-                    }
-                },
                 {
                     "T": ["html", "content"],
                     "name": "station-1-text",
@@ -301,9 +221,12 @@ var OXPAGE = {
         },
 
         {
-            "links": [],
             "title": "node-6",
             "name": "node-6",
+            "links": [
+                {"text": "⯅", "href": "javascript:zenScroll('node-5')", "class": "link-to-node-up light-color node-6-link-1"},
+                {"text": "⯆", "href": "javascript:zenScroll('node-7')", "class": "link-to-node-down light-color node-6-link-2"}
+            ],
             "assets": [
                 {
                     "T": ["text", "action"],
@@ -312,9 +235,12 @@ var OXPAGE = {
                     "tooltip": "Play Video",
                     "classNames": ["asset-text-default", "asset-play-action"],
                     "options": {
-                        "click": ["org.pragmas.OxShow.OxUtils().hideElement('station-1-image')",
-                                  "org.pragmas.OxShow.VideoPlayer().show('station-1-video')",
-                                  "org.pragmas.OxShow.VideoPlayer().play('station-1-video')"].join(";")
+                        "click": ["org.pragmas.OxShow.OxUtils().hideElement('node-6-image')",
+                                  "org.pragmas.OxShow.OxUtils().hideElement('node-6-text')",
+                                  "org.pragmas.OxShow.OxUtils().hideElement('node-6-link-1')",
+                                  "org.pragmas.OxShow.OxUtils().hideElement('node-6-link-2')",
+                                  "org.pragmas.OxShow.VideoPlayer().show('node-6-video')",
+                                  "org.pragmas.OxShow.VideoPlayer().play('node-6-video')"].join(";")
                     },
                     "style": {
                         "position": "fixed",
@@ -333,9 +259,12 @@ var OXPAGE = {
                     "tooltip": "Pause Video",
                     "classNames": ["asset-text-default", "asset-play-action"],
                     "options": {
-                        "click": ["org.pragmas.OxShow.OxUtils().showElement('station-1-image')",
-                                  "org.pragmas.OxShow.VideoPlayer().hide('station-1-video')",
-                                  "org.pragmas.OxShow.VideoPlayer().pause('station-1-video')"].join(";")
+                        "click": ["org.pragmas.OxShow.OxUtils().showElement('node-6-image')",                                  
+                                  "org.pragmas.OxShow.OxUtils().showElement('node-6-text')",
+                                  "org.pragmas.OxShow.OxUtils().showElement('node-6-link-1')",
+                                  "org.pragmas.OxShow.OxUtils().showElement('node-6-link-2')",
+                                  "org.pragmas.OxShow.VideoPlayer().hide('node-6-video')",
+                                  "org.pragmas.OxShow.VideoPlayer().pause('node-6-video')"].join(";")
                     },
                     "style": {
                         "position": "fixed",
@@ -349,7 +278,7 @@ var OXPAGE = {
                 },
                 {
                     "T": ["html"],
-                    "name": "station-1-text",
+                    "name": "node-6-text",
                     "content": "<h2 class='title'>Nome e cognome</h2>",
                     "classNames": ["asset-text-default", "asset-title"],
                     "style": {
@@ -362,9 +291,9 @@ var OXPAGE = {
                 },
                 {
                     "T": ["image"],
-                    "name": "station-1-image",
+                    "name": "node-6-image",
                     "content": "images/Lindeberg02.jpg",
-                    "classNames": ["node-5-background"],
+                    "classNames": ["node-6-background"],
                     "style": {
                         "position": "relative",
                         "left": "0px",
@@ -375,7 +304,7 @@ var OXPAGE = {
                 },
                 {
                     "T": ["video","vimeo"],
-                    "name": "station-1-video",
+                    "name": "node-6-video",
                     "content": "n:200653452",
                     "options": {
                         "title": "b:false",

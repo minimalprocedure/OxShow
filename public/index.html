@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> "Fra ØSTerås til VESTli" a story by: CALIAS </title>
+
+    <link rel="stylesheet" href="stylesheets/vendor/simplebar/simplebar.css" />    
+    <link rel="stylesheet" href="stylesheets/vendor/foundation/foundation.css" />
+    <link rel="stylesheet" href="stylesheets/application.css" />
+  </head>
+  <body>
+    
+    <div id="oxshow-document" style="position: relative"></div>
+    
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="javascripts/vendor/simplebar/simplebar.js"></script>      
+    <script src="javascripts/vendor/foundation/jquery.js"></script>
+    <script src="javascripts/vendor/foundation/what-input.js"></script>
+    <script src="javascripts/vendor/foundation/foundation.min.js"></script>
+    <script src="javascripts/vendor/smooth-scroll/smooth-scroll.js"></script>
+    <script src="javascripts/vendor/zenscroll/zenscroll.js"></script>
+    <script type="text/javascript" src="javascripts/oxshow-opt.js"></script>
+    <script type="text/javascript" src="defs/page.json"></script>
+    <script src="javascripts/application.js"></script>  
+    <script type="text/javascript">
+
+      org.pragmas.OxShow.MainApp().load("oxshow-document", JSON.stringify(OXPAGE));
+      $(document).foundation();
+
+      var Zenscroll;
+
+      function zenScroll(name) {
+        if(Zenscroll === undefined) {
+          var defaultDuration = 500;
+          var edgeOffset = 0;
+          var myDiv = document.getElementById("oxshow-document");
+          Zenscroll = zenscroll.createScroller(myDiv, defaultDuration, edgeOffset);
+        }
+        var target = document.querySelector("[data-name-anchor^='"+name+"']");    
+        Zenscroll.to(target);
+      }
+
+     </script>
+  </body>
+</html>

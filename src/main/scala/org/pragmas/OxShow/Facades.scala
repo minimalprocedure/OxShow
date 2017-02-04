@@ -67,13 +67,24 @@ object OxUtils extends js.Object {
 
   
   def showElement(dataName: String) = {
-    val e = dom.document.querySelector(s"[data-name=${dataName}]")
-    e.asInstanceOf[HTMLElement].style.display = "block"
+    val first = dom.document.querySelector(s"[data-name=${dataName}]")
+    val e = if(first != null) first else dom.document.querySelector(s".${dataName}")
+    if(e != null) {
+      val element = e.asInstanceOf[HTMLElement]
+      val display = element.getAttribute("data-old-display")
+      element.style.display = if (display.isEmpty) "block" else display
+    }
   }
 
   def hideElement(dataName: String) = {
-    val e = dom.document.querySelector(s"[data-name=${dataName}]")
-    e.asInstanceOf[HTMLElement].style.display = "none"
+    val first = dom.document.querySelector(s"[data-name=${dataName}]")
+    val e = if(first != null) first else dom.document.querySelector(s".${dataName}")
+    if(e != null) {
+      val element = e.asInstanceOf[HTMLElement]
+      val display = dom.window.getComputedStyle(element).getPropertyValue("display")
+      element.setAttribute("data-old-display", display)
+      element.style.display = "none"
+    }
   }
 
   def toggleElement(dataName: String) = {

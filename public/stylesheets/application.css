@@ -14,15 +14,16 @@ body {
 }
 
 #oxshow-document {
-    position:fixed;
+    position:absolute;
     overflow: auto;
     width: 1293px;
     height: 720px;
-    margin: 0em auto;
-    
+    margin: 0 auto;
+    /*transform: translate(-50%, 5%);*/
 }
 
 .node-container {
+    height: 720px;
 }
 
 .asset-document {
@@ -65,9 +66,34 @@ body {
     height: 30em;
 }
 
+.node-container {
+    overflow: hidden;
+}
+
+.node-container-link {
+    font-size: 4rem;
+    line-height: 2rem;
+    left: 48%;
+    top: -4rem;
+    position: relative;
+    margin: 0rem;
+    padding:0rem;
+}
+
+.link-to-node-up {
+}
+
+.light-color {
+    color: #ffffff !important;
+}
+
+.dark-color {
+    color: #222222 !important;
+}
+
 
 /****************************
-node 1                       
+node 2                       
 *****************************/
 .train-0-text {
     text-align: center;
@@ -97,7 +123,7 @@ node 1
 }
 
 /****************************
-node 2                       
+node 3                       
 *****************************/
 .train-1-text {
     text-align: center;
@@ -116,7 +142,7 @@ node 2
 }
 
 /****************************
-node 3                       
+node 4                       
 *****************************/
 .station-text {
     text-align: center;
@@ -129,7 +155,7 @@ node 3
 }
 
 /****************************
-node 4                       
+node 5                       
 *****************************/
 
 .blank-1-text {
@@ -151,14 +177,14 @@ node 4
 
 
 /****************************
-node 5                       
+node 6                       
 *****************************/
 
-.station-1-text {
+.node-6-text {
 
 }
 
-.station-1-text .title {
+.node-6-text .title {
     font-family: 'Droid Serif', serif;
     font-size: 3em;
     text-align: center;

@@ -190,15 +190,27 @@ class DocumentProducer(doc: Document) {
     resizeFullsizes
   }
 
-  def assets(node: DocNode, parent: HTMLDivElement, zIndex: Int = 0) = {    
+  def assets(node: DocNode, parent: HTMLDivElement, zIndex: Int = 0) = {
     val nodeContainer = div(cls:=s"node-container ${node.name}", data.name:=node.name, style:=s"z-index:${zIndex}").render
+
     nodeContainer.appendChild(
       a(cls:="node-container-anchor", data.t:="node-container-anchor", data.name.anchor:=node.name, data.scroll:=1, style:="display:block;").render)
+
     parent.appendChild(nodeContainer)
-    node.assets.foldLeft(node.assets.length + 10)((index, asset) => {
-      prepareAsset(asset, nodeContainer, index + zIndex * 10)
-      index - 1
+    val indices = node.assets.foldLeft((0, node.assets.length + 10))((indices, asset) => {
+      val i = (indices._2 + zIndex * 10, indices._2 - 1)
+      prepareAsset(asset, nodeContainer, i._1)
+      i
     })
+
+    val links = node.links.getOrElse(DocAsset.EMPTY_LIST)
+    links.foreach(link => {
+      val index = indices._1 + 1
+      nodeContainer.appendChild(
+        a(href:=link("href"), cls:=s"node-container-link ${link("class")}", data.t:="node-container-link", style:=s"z-index:${index}")(raw(link("text"))).render
+      )}
+    )
+
     nodeContainer
   }
 
